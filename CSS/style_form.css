@@ -1,0 +1,59 @@
+@import url('style_main.css');
+
+/* --- UZI / ABSOLUTE SOLVER FINAL VERSION --- */
+
+/* 1. De Container (Geen rode gloed meer!) */
+.container {
+    border: 2px solid #bc13fe !important;
+    box-shadow: 0 0 25px rgba(188, 19, 254, 0.7) !important;
+    background: rgba(10, 10, 15, 0.95) !important;
+}
+
+/* 2. De Titels en Labels */
+h1, label, p {
+    color: #bc13fe !important;
+    text-shadow: 0 0 10px #bc13fe !important;
+    font-family: 'Courier New', monospace;
+}
+
+/* 3. Invoervelden (Pikzwart met felle paarse rand) */
+input[type="text"], textarea, select {
+    background-color: #000000 !important;
+    color: #e0b0ff !important;
+    border: 1px solid #bc13fe !important;
+    border-left: 6px solid #bc13fe !important;
+    padding: 12px !important;
+}
+
+/* 4. De Opslaan Knop (Feller paars voor leesbaarheid) */
+input[type="submit"], button {
+    background: #bc13fe !important;
+    color: #ffffff !important;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 3px;
+    border: none !important;
+    padding: 15px !important;
+    box-shadow: 0 0 20px #bc13fe !important;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+input[type="submit"]:hover {
+    background: #ffffff !important;
+    color: #bc13fe !important;
+    box-shadow: 0 0 30px #ffffff !important;
+}
+
+/* 5. Terug naar Home Link */
+a {
+    color: #bc13fe !important;
+    text-decoration: none !important;
+    font-weight: bold;
+    text-shadow: 0 0 5px #bc13fe;
+}
+
+a:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 15px #bc13fe !important;
+}

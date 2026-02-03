@@ -1,0 +1,60 @@
+@import url('style_main.css');
+
+.recent-box h3 {
+    color: #bc13fe;
+    border-bottom: 2px solid #bc13fe;
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li::before {
+    content: "> ";
+    color: #ffd700;
+    font-weight: bold;
+}
+
+/* De rode gevaren-knop */
+.delete-btn {
+    background: #440000 !important;
+    color: #ff4444 !important;
+    border: 1px solid #ff4444 !important;
+    clip-path: none !important;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #ff4444 !important;
+    color: #000 !important;
+    box-shadow: 0 0 20px #ff4444;
+}
+
+/* De container voor de acties */
+.actions {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Ruimte tussen de rode knop en de terug-link */
+}
+
+/* De container voor de terug-link om deze te centreren */
+.back-container {
+    text-align: center;
+    width: 100%;
+}
+
+.back-link {
+    color: #ff0000 !important;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.back-link:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px #ff0000;
+}
