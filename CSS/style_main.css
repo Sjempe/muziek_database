@@ -83,3 +83,84 @@ a:hover {
     clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
     box-sizing: border-box;
 }
+
+/* Zoekcontainer over de volle breedte op mobiel */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+#zoekveld {
+    width: 100%;
+    padding: 15px; /* Groter voor dikke vingers */
+    font-size: 18px; /* Voorkomt inzoomen op iPhone */
+    background: #000;
+    border: 2px solid var(--drone-purple);
+    color: white;
+}
+
+/* De suggestie box aanpassen voor mobiel */
+#suggestie-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1a001a;
+    border: 2px solid var(--drone-purple);
+    border-top: none;
+    z-index: 9999;
+    max-height: 300px;
+    overflow-y: auto;
+    /* Zorg voor een schaduw zodat het over de rest van de content zweeft */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.suggestie-item {
+    padding: 15px; /* Ruim genoeg om aan te raken */
+    border-bottom: 1px solid #2a0035;
+    font-size: 1.1rem;
+    color: #fff;
+    display: block;
+}
+
+/* Mobiele specifieke aanpassingen */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Maak de knoppen over de hele breedte */
+    .submit-btn, .back-link {
+        padding: 18px;
+        font-size: 1.1rem;
+    }
+}
+
+/* 1. Zorg dat de browser geen eigen marges toevoegt aan de randen */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Voorkomt irritant horizontaal scrollen op gsm */
+}
+
+/* 2. Zorg dat de container de volledige breedte benut */
+.container {
+    width: 100%;
+    box-sizing: border-box; /* Zorgt dat de border BINNEN de 100% valt */
+    border-right: 2px solid #ffff00; /* Jouw gele lijn */
+}
+
+/* 3. Check de box van 'Laatst toegevoegd' */
+.recent-box {
+    margin-right: 0;
+    border-right: 2px solid #ffff00;
+    width: 100%;
+}

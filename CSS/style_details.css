@@ -1,60 +1,187 @@
-@import url('style_main.css');
+/* FILE: style_details.css 
+   THEME: Murder Drones Red Edition
+*/
 
-.recent-box h3 {
-    color: #bc13fe;
-    border-bottom: 2px solid #bc13fe;
-    padding-bottom: 5px;
+:root {
+    --drone-red: #ff0000;          /* Het felle rood */
+    --dark-bg: #0a0000;            /* Bijna zwarte achtergrond */
+    --card-bg: rgba(20, 0, 0, 0.8); /* Iets lichter rood/zwart voor de boxen */
+    --text-main: #ffffff;          /* Wit voor de songtitels */
+    --text-dim: #bbbbbb;           /* Grijs voor minder belangrijke tekst */
 }
 
-ul {
-    list-style: none;
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-li::before {
-    content: "> ";
-    color: #ffd700;
+body {
+    background-color: var(--dark-bg);
+    font-family: 'Courier New', Courier, monospace; /* Monospace past goed bij de stijl */
+    color: var(--text-dim);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* De achtergrond puntjes die je in je screenshot had */
+    background-image: radial-gradient(circle, #220000 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background: var(--card-bg);
+    padding: 40px;
+    border: 2px solid var(--drone-red);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    position: relative;
+}
+
+header h1 {
+    color: var(--drone-red);
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+}
+
+.meta-info {
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--drone-red);
+    padding-bottom: 10px;
+}
+
+.meta-info p {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.text-info {
+    color: var(--drone-red);
+}
+
+h3 {
+    color: #ff3333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+/* De Tabel */
+.track-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.track-table th {
+    background-color: var(--drone-red);
+    color: #000000;
+    padding: 12px;
+    text-align: left;
+    text-transform: uppercase;
     font-weight: bold;
 }
 
-/* De rode gevaren-knop */
+.track-row {
+    border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+    transition: background 0.3s;
+}
+
+.track-row:hover {
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.track-row td {
+    padding: 12px;
+    color: var(--text-main);
+}
+
+.drone-arrow {
+    color: var(--drone-red);
+    font-weight: bold;
+    width: 50px;
+}
+
+/* Acties / Knoppen */
+.actions {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .delete-btn {
-    background: #440000 !important;
-    color: #ff4444 !important;
-    border: 1px solid #ff4444 !important;
-    clip-path: none !important;
-    cursor: pointer;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: var(--drone-red);
+    border: 1px solid var(--drone-red);
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.3s;
 }
 
 .delete-btn:hover {
-    background: #ff4444 !important;
-    color: #000 !important;
-    box-shadow: 0 0 20px #ff4444;
+    background: var(--drone-red);
+    color: #fff;
+    box-shadow: 0 0 15px var(--drone-red);
 }
 
-/* De container voor de acties */
-.actions {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Ruimte tussen de rode knop en de terug-link */
-}
-
-/* De container voor de terug-link om deze te centreren */
 .back-container {
     text-align: center;
-    width: 100%;
 }
 
 .back-link {
-    color: #ff0000 !important;
+    color: #ff3333;
     text-decoration: none;
-    font-family: 'Courier New', monospace;
-    text-transform: uppercase;
-    font-size: 0.9em;
+    font-size: 0.9rem;
+    transition: color 0.3s;
 }
 
 .back-link:hover {
-    color: #ffffff !important;
-    text-shadow: 0 0 10px #ff0000;
+    color: #ffffff;
+    text-shadow: 0 0 5px #fff;
+}
+
+/* Custom scrollbar voor de rode vibe */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #110000;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--drone-red);
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%; /* Iets meer ruimte aan de zijkanten */
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Titel iets kleiner zodat hij niet afbreekt */
+    }
+
+    /* Maak de tabel leesbaar op gsm */
+    .track-table th, .track-table td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Knoppen groter maken voor je duim */
+    .delete-btn, .back-link {
+        display: block;
+        padding: 15px;
+        font-size: 1rem;
+        text-align: center;
+    }
 }

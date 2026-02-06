@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 // 2. Verbinding maken met de database
 $host = "localhost";
 $user = "seppelambrechts";
-$pass = "Brugge281108"; // Pas aan als je wachtwoord anders is
+$pass = "Brugge281108"; 
 $db   = "muziek_database";
 
 $conn = new mysqli($host, $user, $pass, $db);
@@ -40,6 +40,10 @@ $row = $res_album->fetch_assoc();
 if (!$row) {
     die("Album niet gevonden in de database.");
 }
+
+// 5. Query om de liedjes op te halen
+$sql_liedjes = "SELECT titel_lied FROM liedjes WHERE album_id = $album_id ORDER BY lied_id ASC";
+$res_liedjes = $conn->query($sql_liedjes);
 ?>
 
 <!DOCTYPE html>
@@ -48,42 +52,55 @@ if (!$row) {
     <meta charset="UTF-8">
     <title>Details - <?php echo htmlspecialchars($row['titel_album']); ?></title>
     <link rel="stylesheet" type="text/css" href="CSS/style_details.css?v=<?php echo time(); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
 
 <div class="container">
-    <h1><?php echo htmlspecialchars($row['titel_album']); ?></h1>
-    
-    <p><strong class="text-info">Artiest:</strong> <?php echo htmlspecialchars($row['naam_artiest'] ?? 'Onbekend'); ?></p>
-    <p><strong class="text-info">Drager:</strong> <?php echo htmlspecialchars($row['type_album'] ?? 'Niet in database'); ?></p>
+    <header>
+        <h1><?php echo htmlspecialchars($row['titel_album']); ?></h1>
+        <div class="meta-info">
+            <p><strong class="text-info">ARTIEST:</strong> <?php echo htmlspecialchars($row['naam_artiest'] ?? 'Onbekend'); ?></p>
+            <p><strong class="text-info">TYPE:</strong> <?php echo htmlspecialchars($row['type_album'] ?? 'Niet in database'); ?></p>
+        </div>
+    </header>
 
     <div class="recent-box">
-        <h3>Tracklist</h3>
+        <h3>TRACKLIST</h3>
         <div class="tracklist-container">
-            <?php
-            // 5. Liedjes ophalen die bij dit album horen
-            $sql_liedjes = "SELECT titel_lied FROM liedjes WHERE album_id = $album_id";
-            $res_liedjes = $conn->query($sql_liedjes);
-
-            if ($res_liedjes && $res_liedjes->num_rows > 0) {
-                while($lied = $res_liedjes->fetch_assoc()) {
-                    echo "<div class='track-row'>";
-                    echo "<span class='drone-arrow'> > </span>"; 
-                    echo htmlspecialchars($lied['titel_lied']);
-                    echo "</div>";
-                }
-            } else {
-                echo "<p>Geen liedjes gevonden voor dit album.</p>";
-            }
-            ?>
+            <?php if ($res_liedjes && $res_liedjes->num_rows > 0): ?>
+                <table class="track-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">#</th>
+                            <th style="width: 85%;">TITEL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $i = 1;
+                        // De lus loopt door alle liedjes en maakt voor elk liedje een NIEUWE <tr> (rij)
+                        while($lied = $res_liedjes->fetch_assoc()): ?>
+                            <tr class="track-row">
+                                <td class="drone-arrow"><?php echo $i++; ?>.</td>
+                                <td class="track-name">
+                                    <?php echo htmlspecialchars($lied['titel_lied']); ?>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p class="no-data">Geen liedjes gevonden voor dit album.</p>
+            <?php endif; ?>
         </div>
     </div>
 
     <div class="actions">
-        <a href="delete_album.php?id=<?php echo $album_id; ?>" class="delete-btn" onclick="return confirm('WARNING: Delete album?')">Verwijder Album</a>
+        <a href="delete_album.php?id=<?php echo $album_id; ?>" class="delete-btn" onclick="return confirm('WARNING: Permanent deletion of subject data. Proceed?')">DELETE ALBUM</a>
         
         <div class="back-container">
-            <a href="index.php" class="back-link">Terug naar overzicht</a>
+            <a href="index.php" class="back-link"> [ BACK TO OVERVIEW ] </a>
         </div>
     </div>
 </div>

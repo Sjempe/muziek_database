@@ -1,59 +1,140 @@
-@import url('style_main.css');
+/* FILE: style_add.css 
+   THEME: Murder Drones Purple Edition
+*/
 
-/* --- UZI / ABSOLUTE SOLVER FINAL VERSION --- */
+:root {
+    --drone-purple: #bc13fe;       /* Fel neon paars */
+    --dark-bg: #050005;            /* Diep donkerpaarse/zwarte achtergrond */
+    --card-bg: rgba(15, 0, 20, 0.9); /* Transparant donkerpaars */
+    --text-main: #ffffff;
+    --text-dim: #a386ad;           /* Gedimd paars-grijs */
+}
 
-/* 1. De Container (Geen rode gloed meer!) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-bg);
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-dim);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* De achtergrond puntjes in het paars */
+    background-image: radial-gradient(circle, #2a0035 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
 .container {
-    border: 2px solid #bc13fe !important;
-    box-shadow: 0 0 25px rgba(188, 19, 254, 0.7) !important;
-    background: rgba(10, 10, 15, 0.95) !important;
+    width: 95%;
+    max-width: 600px;
+    background: var(--card-bg);
+    padding: 30px;
+    border: 2px solid var(--drone-purple);
+    box-shadow: 0 0 25px rgba(188, 19, 254, 0.3);
 }
 
-/* 2. De Titels en Labels */
-h1, label, p {
-    color: #bc13fe !important;
-    text-shadow: 0 0 10px #bc13fe !important;
-    font-family: 'Courier New', monospace;
-}
-
-/* 3. Invoervelden (Pikzwart met felle paarse rand) */
-input[type="text"], textarea, select {
-    background-color: #000000 !important;
-    color: #e0b0ff !important;
-    border: 1px solid #bc13fe !important;
-    border-left: 6px solid #bc13fe !important;
-    padding: 12px !important;
-}
-
-/* 4. De Opslaan Knop (Feller paars voor leesbaarheid) */
-input[type="submit"], button {
-    background: #bc13fe !important;
-    color: #ffffff !important;
+header h1 {
+    color: var(--drone-purple);
+    text-align: center;
+    font-size: 2.2rem;
     text-transform: uppercase;
-    font-weight: 900;
-    letter-spacing: 3px;
-    border: none !important;
-    padding: 15px !important;
-    box-shadow: 0 0 20px #bc13fe !important;
-    cursor: pointer;
-    transition: 0.2s;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px rgba(188, 19, 254, 0.6);
 }
 
-input[type="submit"]:hover {
-    background: #ffffff !important;
-    color: #bc13fe !important;
-    box-shadow: 0 0 30px #ffffff !important;
+/* Formulier Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* 5. Terug naar Home Link */
-a {
-    color: #bc13fe !important;
-    text-decoration: none !important;
+label {
+    color: var(--drone-purple);
     font-weight: bold;
-    text-shadow: 0 0 5px #bc13fe;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 8px;
 }
 
-a:hover {
-    color: #ffffff !important;
-    text-shadow: 0 0 15px #bc13fe !important;
+input[type="text"], 
+input[type="number"], 
+select, 
+textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--drone-purple);
+    color: #fff;
+    font-family: inherit;
+    outline: none;
+    transition: box-shadow 0.3s;
+}
+
+input:focus, select:focus {
+    box-shadow: 0 0 10px var(--drone-purple);
+}
+
+/* De Verzendknop */
+.btn-add {
+    background: transparent;
+    color: var(--drone-purple);
+    border: 2px solid var(--drone-purple);
+    padding: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+
+.btn-add:hover {
+    background: var(--drone-purple);
+    color: #000;
+    box-shadow: 0 0 20px var(--drone-purple);
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.back-link:hover {
+    color: var(--drone-purple);
+    text-shadow: 0 0 5px var(--drone-purple);
+}
+
+/* Select dropdown styling */
+select option {
+    background: #1a001a;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    input, select, textarea {
+        font-size: 16px; /* VERPLICHT: voorkomt dat iPhone automatisch inzoomt bij typen */
+        padding: 12px;
+    }
+
+    .submit-btn {
+        padding: 18px;
+        font-size: 1.1rem;
+    }
 }

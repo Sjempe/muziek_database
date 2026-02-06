@@ -14,6 +14,7 @@ $zoekterm = isset($_GET['search']) ? $_GET['search'] : "";
     <meta charset="UTF-8">
     <title>Muziek Database - Home</title>
     <link rel="stylesheet" type="text/css" href="CSS/style_main.css?v=<?php echo time(); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
     <div class="container">
@@ -46,6 +47,6 @@ $zoekterm = isset($_GET['search']) ? $_GET['search'] : "";
             <?php endif; ?>
     </div>
         <a href="albums.php" class="btn-add">album toevoegen</a>
-    </div>
+    </div>  
 </body>
 </html>

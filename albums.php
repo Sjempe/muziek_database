@@ -50,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <link rel="stylesheet" type="text/css" href="CSS/style_form.css?v=<?php echo time(); ?>">
     <title>Toevoegen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
     <div class="container">
@@ -69,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <button type="submit" class="btn-add" style="width: 100%; border: none; cursor: pointer;">Opslaan</button>
         </form>
-        <a href="home.php" style="display:block; text-align:center; margin-top:10px;">Terug naar Home</a>
+        <a href="index.php" style="display:block; text-align:center; margin-top:10px;">Terug naar Home</a>
     </div>
 </body>
 </html>
